@@ -5,7 +5,7 @@ const projects = [
     title: "Analyse Data F1",
     desc: "Optimisation des stratégies de course via l'analyse de données historiques de télémétrie.",
     tech: "Python, Pandas, Matplotlib",
-    link: "#" // À remplir plus tard si tu le mets sur GitHub
+    link: "https://github.com/MathisLc25/F1-Data-Analysis"
   },
   {
     title: "LedgerOne (POC)",
