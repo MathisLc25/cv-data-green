@@ -42,7 +42,7 @@ export default function Home() {
               Anglais B2
             </span>
             <a 
-              href="/CV_Mathis_Ladine_Caloc.pdf.pdf" 
+              href="CV_Mathis_Ladine_Caloc.pdf.pdf" 
               target="_blank" 
               rel="noopener noreferrer"
               className="px-4 py-1 text-[11px] border border-accent/40 rounded-full bg-accent/10 text-accent hover:bg-accent hover:text-white transition-all font-mono font-bold ml-2"
