@@ -5,11 +5,9 @@ export default function Home() {
   return (
     <main className="bg-subtle min-h-screen flex flex-col items-center px-6 py-20 md:py-32">
       
-      {/* --- 00 // HEADER & HERO --- */}
       <section className="w-full max-w-4xl mb-32">
         <header className="flex flex-col items-start gap-6">
           
-          {/* Badge de disponibilité Alternance */}
           <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 mb-2">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
@@ -36,7 +34,6 @@ export default function Home() {
             Je cherche à progresser et améliorer mes compétences dans les domaines du numérique.
           </p>
 
-          {/* Badges et Bouton CV */}
           <div className="flex flex-wrap items-center gap-3 mt-4">
             <span className="px-3 py-1 text-[11px] border border-white/10 rounded-full bg-white/5 text-gray-300 font-mono">
               BIA Aéronautique
@@ -44,7 +41,6 @@ export default function Home() {
             <span className="px-3 py-1 text-[11px] border border-white/10 rounded-full bg-white/5 text-gray-300 font-mono">
               Anglais B2
             </span>
-            {/* BOUTON CV CORRIGÉ CI-DESSOUS */}
             <a 
               href="/CV_Mathis_Ladine_Caloc.pdf" 
               target="_blank" 
@@ -57,7 +53,6 @@ export default function Home() {
         </header>
       </section>
 
-      {/* --- 01 // DATA PROFILE (RADAR CHART) --- */}
       <section className="w-full max-w-4xl mb-32">
         <div className="mb-12">
           <h2 className="text-sm font-mono text-gray-500 uppercase tracking-widest mb-4 italic">
@@ -69,7 +64,6 @@ export default function Home() {
         <SkillsRadar />
       </section>
 
-      {/* --- 01.5 // STACK TECHNIQUE --- */}
       <section className="w-full max-w-4xl mb-32">
         <div className="mb-12">
           <h2 className="text-sm font-mono text-gray-500 uppercase tracking-widest mb-4 italic">
@@ -101,7 +95,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- 02 // PROJETS SÉLECTIONNÉS --- */}
       <section className="w-full max-w-4xl mb-32">
         <div className="mb-12">
           <h2 className="text-sm font-mono text-gray-500 uppercase tracking-widest mb-4 italic">
@@ -113,7 +106,6 @@ export default function Home() {
         <ProjectSection />
       </section>
 
-      {/* --- 02.5 // SOFT SKILLS & EXPÉRIENCE --- */}
       <section className="w-full max-w-4xl mb-32">
         <div className="mb-12">
           <h2 className="text-sm font-mono text-gray-500 uppercase tracking-widest mb-4 italic">
@@ -147,7 +139,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- 03 // VISION & AMBITION --- */}
       <section className="w-full max-w-4xl mb-32 p-8 rounded-2xl border border-accent/20 bg-accent/[0.02] relative overflow-hidden">
         <div className="absolute top-0 right-0 p-4 opacity-10 font-mono text-[60px] leading-none pointer-events-none select-none">
           IA
@@ -164,7 +155,6 @@ export default function Home() {
         </p>
       </section>
 
-      {/* --- FOOTER --- */}
       <footer className="w-full max-w-4xl mt-20 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between gap-8 opacity-50 hover:opacity-100 transition-opacity">
         <div className="flex gap-8 text-xs font-mono">
           <a href="mailto:theomat04@gmail.com" className="hover:text-accent transition-colors">theomat04@gmail.com</a>
