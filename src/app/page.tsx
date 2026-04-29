@@ -47,7 +47,7 @@ export default function Home() {
 <<<<<<< HEAD
               href="/cv_mathis_v2.pdf" 
 =======
-              href="CV_Mathis_Ladine_Caloc.pdf.pdf" 
+              href="CV_Mathis_Ladine_Caloc.pdf" 
 >>>>>>> 259d5f8d93d13f728f12506c048c1db245c60106
               target="_blank" 
               rel="noopener noreferrer"
