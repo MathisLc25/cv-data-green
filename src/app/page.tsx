@@ -43,18 +43,14 @@ export default function Home() {
             </span>
             
             {/* LIEN VERS LE NOUVEAU FICHIER */}
-            <a 
-<<<<<<< HEAD
-              href="/cv_mathis_v2.pdf" 
-=======
-              href="CV_Mathis_Ladine_Caloc.pdf" 
->>>>>>> 259d5f8d93d13f728f12506c048c1db245c60106
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="px-4 py-1 text-[11px] border border-accent/40 rounded-full bg-accent/10 text-accent hover:bg-accent hover:text-white transition-all font-mono font-bold ml-2"
-            >
-              Consulter CV.pdf
-            </a>
+           <a 
+  href="/cv.pdf" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="px-4 py-1 text-[11px] border border-accent/40 rounded-full bg-accent/10 text-accent hover:bg-accent hover:text-white transition-all font-mono font-bold ml-2"
+>
+  Consulter CV.pdf
+</a>
           </div>
         </header>
       </section>
