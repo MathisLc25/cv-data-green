@@ -74,7 +74,7 @@ export default function Home() {
               Anglais B2
             </span>
             <a 
-              href="/Curriculum Vitae F.pdf" 
+               href="/cv_mathis_v2.pdf"
               target="_blank" 
               rel="noopener noreferrer"
               className="px-6 py-2 text-xs font-semibold rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white transition-colors shadow-lg shadow-emerald-950/50 text-center"
