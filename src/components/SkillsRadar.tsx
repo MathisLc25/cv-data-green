@@ -15,13 +15,14 @@ export default function SkillsRadar() {
   return (
     <div className="w-full h-[400px]">
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>
-          {/* Lignes du radar passées en gris très foncé pour être subtiles */}
-          <PolarGrid stroke="#1e293b" />
-          {/* Police standard au lieu de monospace */}
+        {/* outerRadius passé à 55% pour laisser respirer le texte long sur les côtés */}
+        <RadarChart cx="50%" cy="50%" outerRadius="55%" data={data}>
+          {/* Grille couleur zinc-800 pour matcher avec le nouveau thème noir */}
+          <PolarGrid stroke="#27272a" />
+          {/* Texte couleur zinc-400 */}
           <PolarAngleAxis 
             dataKey="subject" 
-            tick={{ fill: '#94a3b8', fontSize: 12, fontWeight: 500 }} 
+            tick={{ fill: '#a1a1aa', fontSize: 12, fontWeight: 500 }} 
           />
           <Radar
             name="Mathis"
