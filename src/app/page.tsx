@@ -7,7 +7,7 @@ import SkillsRadar from "@/components/SkillsRadar";
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { role: "assistant", content: "Bonjour, je suis le jumeau numerique de Mathis. Posez-moi vos questions sur son parcours, ses projets, ses interets ou ses competences. Je me ferai un plaisir d'y repondre." }
+    { role: "assistant", content: "Bonjour, je suis l'IA de Mathis. Posez-moi vos questions sur son parcours, ses projets, ses interets ou ses competences. Je me ferai un plaisir d'y repondre." }
   ]);
   const [inputMessage, setInputMessage] = useState("");
 
@@ -54,7 +54,7 @@ export default function Home() {
           </div>
 
           <div className="text-xs font-semibold tracking-wider text-emerald-400 uppercase">
-            ECE Bordeaux • Deuxieme annee de Bachelor
+            ECE Bordeaux •  Bachelor 3
           </div>
 
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-none">
@@ -189,7 +189,7 @@ export default function Home() {
             onClick={() => setIsChatOpen(true)}
             className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white px-5 py-3 rounded-xl shadow-xl shadow-emerald-950/40 hover:scale-[1.02] active:scale-[0.98] transition-all font-medium text-xs tracking-wide"
           >
-            Discuter avec son jumeau numerique
+            Discuter avec l'IA
           </button>
         )}
       </div>

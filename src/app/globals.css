@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-accent: #10b981; /* Un vert émeraude plus discret */
+  --color-accent: #10b981; 
 }
 
 :root {
@@ -14,7 +14,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* On garde un dégradé très léger et fixe pour la profondeur */
 .bg-subtle {
   background: radial-gradient(at top left, #10b98110 0%, transparent 40%);
 }
