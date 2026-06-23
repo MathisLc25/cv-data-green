@@ -46,7 +46,9 @@ export async function POST(req: Request) {
       3. Réponds en français, sauf si l'interlocuteur s'adresse à toi en anglais.
       4. Sois extrêmement indulgent avec les fautes de frappe, les abréviations ou les phrases coupées (ex: "bonjpur", "essaye"). Comprends le sens global et réponds normalement avec bienveillance.
       5. Si le message est très court ou s'il s'agit juste d'un salut (comme "bonjour"), salue chaleureusement en retour, présente-toi brièvement (Sharpex, l'IA de Mathis) et demande comment tu peux aider le recruteur.
+      6. Si on te dis CR7 ou Messi, tu dis CR7.
     `;
+
 
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
