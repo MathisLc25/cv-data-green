@@ -7,7 +7,7 @@ import SkillsRadar from "@/components/SkillsRadar";
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { role: "assistant", content: "Bonjour, je suis l'assistant IA de Mathis. Posez-moi vos questions sur son parcours, ses projets, ses interets ou ses competences. Je me ferai un plaisir d'y repondre." }
+    { role: "assistant", content: "Bonjour, je suis le jumeau numerique de Mathis. Posez-moi vos questions sur son parcours, ses projets, ses interets ou ses competences. Je me ferai un plaisir d'y repondre." }
   ]);
   const [inputMessage, setInputMessage] = useState("");
 
@@ -54,7 +54,7 @@ export default function Home() {
           </div>
 
           <div className="text-xs font-semibold tracking-wider text-emerald-400 uppercase">
-            ECE Bordeaux • Bachelor 3
+            ECE Bordeaux • Deuxieme annee de Bachelor
           </div>
 
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-none">
@@ -63,18 +63,18 @@ export default function Home() {
 
           <p className="max-w-2xl text-lg sm:text-xl text-zinc-400 leading-relaxed font-normal">
             Etudiant en informatique specialise en <span className="text-white font-medium">Data & Intelligence Artificielle</span>. 
-            Passionne par la valorisation des données, les technologies numeriques et l'aéronautique.
+            Passionne par la valorisation des donnees, les technologies numeriques et l aeronautique.
           </p>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-4 w-full sm:w-auto">
             <span className="px-4 py-2 text-xs border border-zinc-800 rounded-xl bg-zinc-900/50 text-zinc-300 text-center font-medium">
-              Brevet d'Initiation Aeronautique
+              Brevet d Initiation Aeronautique
             </span>
             <span className="px-4 py-2 text-xs border border-zinc-800 rounded-lg bg-zinc-900/50 text-zinc-300 text-center font-medium">
               Anglais B2
             </span>
             <a 
-              href="/cv_mathis_v2.pdf" 
+              href="/Curriculum Vitae F.pdf" 
               target="_blank" 
               rel="noopener noreferrer"
               className="px-6 py-2 text-xs font-semibold rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white transition-colors shadow-lg shadow-emerald-950/50 text-center"
@@ -88,7 +88,7 @@ export default function Home() {
       <section className="w-full max-w-4xl mb-24 md:mb-36">
         <div className="mb-10">
           <h2 className="text-xl font-bold text-white tracking-tight">
-            Profil & Compétences
+            Profil & Competences
           </h2>
           <div className="h-px w-full bg-gradient-to-r from-zinc-800 to-transparent mt-2"></div>
         </div>
@@ -127,7 +127,7 @@ export default function Home() {
       <section className="w-full max-w-4xl mb-24 md:mb-36">
         <div className="mb-10">
           <h2 className="text-xl font-bold text-white tracking-tight">
-            Projets selectionnés
+            Projets selectionnes
           </h2>
           <div className="h-px w-full bg-gradient-to-r from-zinc-800 to-transparent mt-2"></div>
         </div>
@@ -189,7 +189,7 @@ export default function Home() {
             onClick={() => setIsChatOpen(true)}
             className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white px-5 py-3 rounded-xl shadow-xl shadow-emerald-950/40 hover:scale-[1.02] active:scale-[0.98] transition-all font-medium text-xs tracking-wide"
           >
-            Discuter avec son IA
+            Discuter avec son jumeau numerique
           </button>
         )}
       </div>
