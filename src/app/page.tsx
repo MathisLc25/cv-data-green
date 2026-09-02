@@ -3,6 +3,7 @@
 import { useState } from "react";
 import ProjectSection from "@/components/ProjectCard";
 import SkillsRadar from "@/components/SkillsRadar";
+import ProjectSection from "@/components/ProjectSection";
 
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
