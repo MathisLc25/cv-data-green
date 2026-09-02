@@ -44,16 +44,16 @@ const projects = [
     link: "https://github.com/MathisLc25/AI-customer"
   },
   {
-    title: "Moteur d'qudit de transactions bancaires",
+    title: "Moteur d'audit de transactions bancaires",
     desc: "Moteur haute performance en C99 analysant 1 000 000 de transactions bancaires en 714 ms (~1,4M tx/s). Contrôle de conformité, calcul d'agrégats de volume et détection d'alertes de fraude en temps réel.",
     tech: "C99, GCC O3, AML Compliance, Benchmarking",
     link: "https://github.com/MathisLc25/bank-log-engine"
   },
   {
-    title: "Entrepôt de données bancaires & analyse de fraude",
-    desc: "SQL Avancé / Entrepôt de données modélisé en schéma en étoile sous DuckDB avec ingestion de 10 000+ transactions. Détection de fraudes par calcul de vélocité temporelle",
-    tech: "SQL OLAP, DuckDB, Star Schema, Window Functions, Python",
-    link: "https://github.com/MathisLc25/bank-sql-analytics"
+  title: "Supervision de vol & télémétrie aéronautique (OCC)",
+  desc: "Système d'Operations Control Center Air France : suivi radar orthodromique ADS-B dynamique, calcul d'empreinte carbone/kérosène et analyse vectorielle de vent traversier à l'atterrissage.",
+  tech: "Python, Streamlit, Folium, Plotly, Géodésie WGS 84, Pandas",
+  link: "https://aero-flight-tracker.streamlit.app"
   }
   
   
