@@ -13,12 +13,7 @@ const projects = [
     tech: "Java, JEE, Architecture Logicielle",
     github: "https://github.com/MathisLc25/JEECE-LedgerOne-Test-Technique"
   },
-  {
-    title: "Dictionnaire en C",
-    desc: "Conception d'un dictionnaire bilingue optimisé avec gestion rigoureuse de la mémoire dynamique.",
-    tech: "Langage C, Algorithmique",
-    github: "https://github.com/MathisLc25/Projet-C-"
-  },
+  
   {
     title: "Eco-Track F1 v2",
     category: "AÉRONAUTIQUE & F1",
@@ -28,12 +23,7 @@ const projects = [
     demo: "https://eco-track-f1.vercel.app",
     github: "https://github.com/MathisLc25/eco-track-f1-v2"
   },
-  {
-    title: "Gestion Commerciale & SQL",
-    desc: "Modélisation MCD/MLD et implémentation d'une base de données SQL pour flux commerciaux.",
-    tech: "SQL, MySQL",
-    github: "#"
-  },
+
   {
     title: "F1 Performance App",
     category: "AÉRONAUTIQUE & F1",
