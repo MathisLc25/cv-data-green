@@ -50,10 +50,13 @@ const projects = [
     link: "https://github.com/MathisLc25/bank-log-engine"
   },
   {
-  title: "Supervision de vol & télémétrie aéronautique (OCC)",
-  desc: "Système d'Operations Control Center Air France : suivi radar orthodromique ADS-B dynamique, calcul d'empreinte carbone/kérosène et analyse vectorielle de vent traversier à l'atterrissage.",
-  tech: "Python, Streamlit, Folium, Plotly, Géodésie WGS 84, Pandas",
-  link: "https://aero-flight-tracker.streamlit.app"
+ title: "Aero ADS-B Flight Tracker",
+  category: "AÉRONAUTIQUE & F1",
+  badge: "Données spatiales temps réel",
+  desc: "Visualiseur de routes aériennes et logs radar avec calculs des profils d'altitude, de dérive et estimation de consommation carburant.",
+  tech: ["Python", "Streamlit", "Folium", "Plotly", "Aéronautique"],
+  demo: "https://aero-flight-tracker.streamlit.app", // <-- Ajoute cette ligne (ou demoUrl / live selon ton code)
+  github: "https://github.com/MathisLc25/aero-flight-tracker" // ou link
   }
   
   
