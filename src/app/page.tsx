@@ -111,23 +111,23 @@ export default function Home() {
       : projects.filter((p) => p.category === selectedCategory);
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100 px-6 py-12 md:px-16 max-w-6xl mx-auto">
-      {/* En-tête / Header avec liens directs Pro & RH */}
-      <header className="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-800 pb-8 mb-12 gap-6">
+    <main className="min-h-screen bg-black text-zinc-100 px-6 py-12 md:px-16 max-w-6xl mx-auto selection:bg-green-500 selection:text-black">
+      {/* En-tête / Header avec le style sombre & vert Matrix */}
+      <header className="flex flex-col md:flex-row md:items-center justify-between border-b border-zinc-800/80 pb-8 mb-12 gap-6">
         <div>
           <div className="flex items-center gap-3 mb-2">
             <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
               Mathis Ladine Caloc
             </h1>
-            <span className="hidden sm:inline-block px-2.5 py-1 text-[11px] font-semibold bg-emerald-950/80 text-emerald-400 border border-emerald-800/50 rounded-full">
+            <span className="hidden sm:inline-block px-2.5 py-1 text-[11px] font-semibold bg-green-950/60 text-green-400 border border-green-500/40 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.2)]">
               Alternance Sept. 2026
             </span>
           </div>
-          <p className="text-emerald-400 font-medium text-base md:text-lg">
+          <p className="text-green-400 font-medium text-base md:text-lg">
             Data & Artificial Intelligence • ECE Bordeaux
           </p>
-          <p className="text-slate-400 text-sm mt-1 max-w-xl">
-            Futur ingénieur passionné par l'aéronautique, la télémétrie sportive et les architectures de données performantes.
+          <p className="text-zinc-400 text-sm mt-1 max-w-xl">
+            Futur ingénieur orienté Data, Intelligence Artificielle et modélisation télémétrique haute performance.
           </p>
         </div>
 
@@ -136,34 +136,99 @@ export default function Home() {
             href="https://github.com/MathisLc25"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-slate-900 border border-slate-700 hover:border-emerald-500 hover:text-white transition-all text-xs font-semibold text-slate-300 shadow-sm"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-zinc-900/90 border border-zinc-800 hover:border-green-500 hover:text-white transition-all text-xs font-semibold text-zinc-300 hover:shadow-[0_0_12px_rgba(34,197,94,0.2)]"
           >
             <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
               <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
             </svg>
-            Mon GitHub ↗
+            GitHub ↗
           </a>
 
           <a
             href="/cv.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-xs transition-colors shadow-sm"
+            className="px-4 py-2.5 rounded-lg bg-green-500 hover:bg-green-400 text-black font-bold text-xs transition-all shadow-[0_0_15px_rgba(34,197,94,0.4)]"
           >
-            Télécharger mon CV 📄
+            Télécharger CV 📄
           </a>
         </div>
       </header>
 
-      {/* Section des Projets */}
+      {/* Section Graphique Télémétrie / Visualisation de Données */}
+      <section className="mb-14 p-6 rounded-2xl bg-zinc-950 border border-zinc-800/80 shadow-[0_0_20px_rgba(0,0,0,0.8)]">
+        <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-5 gap-2">
+          <div>
+            <h3 className="text-sm uppercase tracking-wider text-green-400 font-bold flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+              Visualisation & Télémétrie en temps réel
+            </h3>
+            <p className="text-xs text-zinc-400 mt-0.5">
+              Modélisation comparative d'usure pneumatique & charge aéro (Simulation Python FastF1)
+            </p>
+          </div>
+          <span className="text-[11px] font-mono text-zinc-500 bg-zinc-900 px-2 py-1 rounded border border-zinc-800">
+            Échantillon : 50 Tours
+          </span>
+        </div>
+
+        {/* Représentation graphique SVG stylisée */}
+        <div className="w-full h-44 sm:h-52 bg-zinc-900/50 rounded-xl border border-zinc-800/70 p-4 relative overflow-hidden flex flex-col justify-end">
+          <svg className="w-full h-full overflow-visible" viewBox="0 0 500 120" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="greenGlow" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#22c55e" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#22c55e" stopOpacity="0.0" />
+              </linearGradient>
+            </defs>
+
+            {/* Grille d'arrière-plan */}
+            <line x1="0" y1="30" x2="500" y2="30" stroke="#27272a" strokeDasharray="3 3" />
+            <line x1="0" y1="60" x2="500" y2="60" stroke="#27272a" strokeDasharray="3 3" />
+            <line x1="0" y1="90" x2="500" y2="90" stroke="#27272a" strokeDasharray="3 3" />
+
+            {/* Aire sous la courbe */}
+            <path
+              d="M 0 100 Q 80 85, 150 70 T 300 45 T 420 25 T 500 15 L 500 120 L 0 120 Z"
+              fill="url(#greenGlow)"
+            />
+
+            {/* Courbe principale verte */}
+            <path
+              d="M 0 100 Q 80 85, 150 70 T 300 45 T 420 25 T 500 15"
+              fill="none"
+              stroke="#22c55e"
+              strokeWidth="2.5"
+              className="filter drop-shadow-[0_0_6px_rgba(34,197,94,0.8)]"
+            />
+
+            {/* Courbe de référence grise */}
+            <path
+              d="M 0 95 Q 100 80, 200 65 T 350 40 T 500 30"
+              fill="none"
+              stroke="#52525b"
+              strokeWidth="1.5"
+              strokeDasharray="4 4"
+            />
+          </svg>
+
+          <div className="flex justify-between items-center text-[10px] text-zinc-500 font-mono mt-2 pt-2 border-t border-zinc-800">
+            <span>Départ (Pneus Neufs)</span>
+            <span className="text-green-400/80">Fenêtre Pit-Stop Optimale</span>
+            <span>Fin de relais</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Section des Projets avec onglets */}
       <section className="mb-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
-            <h2 className="text-2xl font-bold text-white tracking-tight">
+            <h2 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
               Projets & Réalisations
             </h2>
-            <p className="text-slate-400 text-sm mt-1">
-              Filtrez selon vos intérêts techniques pour tester les démos en direct ou consulter le code source.
+            <p className="text-zinc-400 text-sm mt-1">
+              Filtrez par domaine technique pour tester les démos en direct ou explorer le code source.
             </p>
           </div>
 
@@ -177,8 +242,8 @@ export default function Home() {
                   onClick={() => setSelectedCategory(cat)}
                   className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all border ${
                     active
-                      ? "bg-emerald-500 text-slate-950 border-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.3)]"
-                      : "bg-slate-900/80 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200"
+                      ? "bg-green-500 text-black border-green-400 shadow-[0_0_12px_rgba(34,197,94,0.4)]"
+                      : "bg-zinc-900 text-zinc-400 border-zinc-800 hover:border-zinc-700 hover:text-white"
                   }`}
                 >
                   {cat}
@@ -188,30 +253,30 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Grille dynamique des projets */}
+        {/* Grille des cartes projets */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredProjects.map((project) => (
             <div
               key={project.title}
-              className="p-6 rounded-2xl border border-slate-800 bg-slate-900/20 hover:border-slate-700 hover:bg-slate-900/40 transition-all duration-300 group flex flex-col justify-between"
+              className="p-6 rounded-2xl border border-zinc-800/90 bg-zinc-950/70 hover:border-green-500/50 hover:shadow-[0_0_20px_rgba(34,197,94,0.12)] transition-all duration-300 group flex flex-col justify-between"
             >
               <div>
                 <div className="flex justify-between items-center mb-3">
-                  <span className="text-[11px] font-bold text-emerald-400 tracking-wider uppercase">
+                  <span className="text-[11px] font-bold text-green-400 tracking-wider uppercase">
                     {project.category}
                   </span>
                   {project.badge && (
-                    <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-950/60 text-emerald-400 border border-emerald-800/40 font-medium">
+                    <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-green-950/60 text-green-400 border border-green-500/30 font-medium">
                       {project.badge}
                     </span>
                   )}
                 </div>
 
-                <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
+                <h3 className="text-xl font-bold text-white group-hover:text-green-400 transition-colors mb-2">
                   {project.title}
                 </h3>
 
-                <p className="text-slate-400 text-sm mb-6 font-normal leading-relaxed">
+                <p className="text-zinc-400 text-sm mb-6 font-normal leading-relaxed">
                   {project.desc}
                 </p>
               </div>
@@ -222,21 +287,21 @@ export default function Home() {
                   {project.tech.split(", ").map((t) => (
                     <span
                       key={t}
-                      className="text-xs px-2.5 py-1 rounded-md bg-slate-800/70 text-slate-300 border border-slate-700/50"
+                      className="text-xs px-2.5 py-1 rounded-md bg-zinc-900 text-zinc-300 border border-zinc-800"
                     >
                       {t}
                     </span>
                   ))}
                 </div>
 
-                {/* Boutons d'actions adaptatifs */}
-                <div className="flex items-center gap-3 pt-2">
+                {/* Boutons d'actions : Démo et/ou GitHub */}
+                <div className="flex items-center gap-3 pt-2 border-t border-zinc-900">
                   {project.demo && (
                     <a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 text-center py-2.5 px-4 text-xs font-semibold rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-colors flex items-center justify-center gap-1.5 shadow-sm"
+                      className="flex-1 text-center py-2.5 px-4 text-xs font-bold rounded-lg bg-green-500 hover:bg-green-400 text-black transition-all flex items-center justify-center gap-1.5 shadow-[0_0_10px_rgba(34,197,94,0.3)]"
                     >
                       Tester la démo ↗
                     </a>
@@ -249,7 +314,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className={`${
                         project.demo ? "flex-1" : "w-full"
-                      } text-center py-2.5 px-4 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-white transition-colors border border-slate-700/60 flex items-center justify-center gap-1.5`}
+                      } text-center py-2.5 px-4 text-xs font-semibold rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-200 hover:text-white transition-colors border border-zinc-800 flex items-center justify-center gap-1.5`}
                     >
                       Code GitHub ↗
                     </a>
