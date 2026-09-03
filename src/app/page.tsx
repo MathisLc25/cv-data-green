@@ -109,8 +109,6 @@ interface ChatMessage {
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<Category>("Tous");
-
-  // État du Chatbot Sharpex
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
@@ -142,17 +140,17 @@ export default function Home() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           message: text,
+          prompt: text,
           history: newMessages.slice(0, -1),
         }),
       });
 
-      if (!response.ok) throw new Error("Erreur de communication avec l'IA");
+      if (!response.ok) throw new Error("Erreur serveur");
 
       const data = await response.json();
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: data.reply || data.message || "Je n'ai pas pu générer de réponse." },
-      ]);
+      const replyText = data.reply || data.response || data.message || "Je n'ai pas pu répondre pour le moment.";
+
+      setMessages((prev) => [...prev, { role: "assistant", content: replyText }]);
     } catch {
       setMessages((prev) => [
         ...prev,
@@ -206,7 +204,7 @@ export default function Home() {
           </a>
 
           <a
-            href="/cv_mathis_v2.pdf"
+            href="/cv.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs transition-all shadow-[0_0_15px_rgba(16,185,129,0.4)]"
@@ -216,15 +214,15 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Profil & Compétences (Radar Chart) */}
+      {/* Profil & Compétences (Radar Chart calibré) */}
       <section className="mb-16">
         <h2 className="text-2xl font-bold text-white tracking-tight mb-8">
           Profil & Compétences
         </h2>
 
-        <div className="p-8 sm:p-12 rounded-3xl bg-zinc-950/80 border border-zinc-900 flex justify-center items-center">
-          <div className="relative w-full max-w-[480px] aspect-square flex items-center justify-center">
-            <svg className="w-full h-full" viewBox="-200 -200 400 400">
+        <div className="p-6 sm:p-10 rounded-3xl bg-zinc-950/80 border border-zinc-900 flex justify-center items-center overflow-hidden">
+          <div className="relative w-full max-w-[620px] aspect-[4/3] flex items-center justify-center">
+            <svg className="w-full h-full overflow-visible" viewBox="-300 -180 600 360">
               {[0.2, 0.4, 0.6, 0.8, 1].map((scale, i) => {
                 const r = 120 * scale;
                 const points = [0, 60, 120, 180, 240, 300]
@@ -269,22 +267,22 @@ export default function Home() {
                 className="filter drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]"
               />
 
-              <text x="0" y="-138" fill="#d4d4d8" fontSize="11" textAnchor="middle" fontWeight="500">
+              <text x="0" y="-138" fill="#d4d4d8" fontSize="12" textAnchor="middle" fontWeight="500">
                 Data (Python/SQL)
               </text>
-              <text x="110" y="-62" fill="#d4d4d8" fontSize="11" textAnchor="start" fontWeight="500">
+              <text x="145" y="-56" fill="#d4d4d8" fontSize="12" textAnchor="start" fontWeight="500">
                 Logiciel (Java, C)
               </text>
-              <text x="110" y="68" fill="#d4d4d8" fontSize="11" textAnchor="start" fontWeight="500">
+              <text x="145" y="66" fill="#d4d4d8" fontSize="12" textAnchor="start" fontWeight="500">
                 Aéronautique (BIA)
               </text>
-              <text x="0" y="145" fill="#d4d4d8" fontSize="11" textAnchor="middle" fontWeight="500">
+              <text x="0" y="148" fill="#d4d4d8" fontSize="12" textAnchor="middle" fontWeight="500">
                 Anglais (B2)
               </text>
-              <text x="-110" y="68" fill="#d4d4d8" fontSize="11" textAnchor="end" fontWeight="500">
+              <text x="-145" y="66" fill="#d4d4d8" fontSize="12" textAnchor="end" fontWeight="500">
                 Frontend (HTML/CSS)
               </text>
-              <text x="-110" y="-62" fill="#d4d4d8" fontSize="11" textAnchor="end" fontWeight="500">
+              <text x="-145" y="-56" fill="#d4d4d8" fontSize="12" textAnchor="end" fontWeight="500">
                 Formule 1
               </text>
             </svg>
@@ -346,7 +344,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projets & Réalisations avec Onglets */}
+      {/* Projets & Réalisations */}
       <section className="mb-24">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
@@ -358,7 +356,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Onglets de filtrage */}
           <div className="flex flex-wrap gap-2">
             {CATEGORIES.map((cat) => {
               const active = selectedCategory === cat;
@@ -379,7 +376,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Grille des cartes projets */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredProjects.map((project) => (
             <div
@@ -450,11 +446,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Widget Flottant : Chat avec Sharpex */}
+      {/* Widget Sharpex */}
       <div className="fixed bottom-6 right-6 z-50">
         {isChatOpen ? (
           <div className="w-[360px] sm:w-[400px] h-[520px] bg-zinc-950 border border-zinc-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-5 duration-200">
-            {/* Header du Chat */}
             <div className="p-4 bg-zinc-900/80 border-b border-zinc-800 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
@@ -468,13 +463,11 @@ export default function Home() {
               <button
                 onClick={() => setIsChatOpen(false)}
                 className="text-zinc-400 hover:text-white p-1 rounded-lg hover:bg-zinc-800 transition-colors text-sm"
-                aria-label="Fermer le chat"
               >
                 ✕
               </button>
             </div>
 
-            {/* Corps des messages */}
             <div className="flex-1 p-4 overflow-y-auto space-y-3.5 text-xs">
               {messages.map((m, idx) => (
                 <div
@@ -504,29 +497,27 @@ export default function Home() {
               <div ref={chatBottomRef} />
             </div>
 
-            {/* Suggestions de questions rapides */}
             <div className="px-3 py-1.5 bg-zinc-900/40 border-t border-zinc-900 flex gap-1.5 overflow-x-auto">
               <button
                 onClick={() => handleSendMessage("Parle-moi de tes projets en F1")}
                 className="text-[10px] px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-emerald-400 hover:border-emerald-500/40 whitespace-nowrap transition-colors"
               >
-                 Projets F1
+                🏎️ Projets F1
               </button>
               <button
                 onClick={() => handleSendMessage("Quelles sont tes disponibilités pour l'alternance ?")}
                 className="text-[10px] px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-emerald-400 hover:border-emerald-500/40 whitespace-nowrap transition-colors"
               >
-                 Alternance
+                📅 Alternance
               </button>
               <button
                 onClick={() => handleSendMessage("Quelles sont tes compétences en Data & IA ?")}
                 className="text-[10px] px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-emerald-400 hover:border-emerald-500/40 whitespace-nowrap transition-colors"
               >
-                Stack Data/IA
+                📊 Stack Data/IA
               </button>
             </div>
 
-            {/* Formulaire d'envoi */}
             <form
               onSubmit={(e) => {
                 e.preventDefault();
