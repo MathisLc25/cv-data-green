@@ -204,7 +204,7 @@ export default function Home() {
             </a>
 
             <a
-              href="/cv_mathis_v2.pdf"
+              href="cv_mathis_v2.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 sm:flex-initial text-center px-4 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs transition-all shadow-[0_0_15px_rgba(16,185,129,0.4)]"
