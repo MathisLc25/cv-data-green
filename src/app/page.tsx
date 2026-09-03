@@ -102,6 +102,13 @@ const projects: Project[] = [
   },
 ];
 
+const skills = [
+  { label: "Data Science & IA", pct: 35, color: "#22c55e" }, // Vert vif
+  { label: "Aéronautique & Télémétrie F1", pct: 25, color: "#16a34a" }, // Vert émeraude
+  { label: "Développement Web & Logiciel", pct: 25, color: "#15803d" }, // Vert moyen
+  { label: "Systèmes C99, Algorithmique & SQL", pct: 15, color: "#27272a" }, // Gris zinc sombre
+];
+
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<Category>("Tous");
 
@@ -112,14 +119,14 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-black text-zinc-100 px-6 py-12 md:px-16 max-w-6xl mx-auto selection:bg-green-500 selection:text-black">
-      {/* En-tête / Header avec le style sombre & vert Matrix */}
-      <header className="flex flex-col md:flex-row md:items-center justify-between border-b border-zinc-800/80 pb-8 mb-12 gap-6">
+      {/* En-tête */}
+      <header className="flex flex-col md:flex-row md:items-center justify-between border-b border-zinc-800 pb-8 mb-12 gap-6">
         <div>
           <div className="flex items-center gap-3 mb-2">
             <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
               Mathis Ladine Caloc
             </h1>
-            <span className="hidden sm:inline-block px-2.5 py-1 text-[11px] font-semibold bg-green-950/60 text-green-400 border border-green-500/40 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.2)]">
+            <span className="hidden sm:inline-block px-2.5 py-1 text-[11px] font-semibold bg-green-950/70 text-green-400 border border-green-500/40 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.2)]">
               Alternance Sept. 2026
             </span>
           </div>
@@ -136,7 +143,7 @@ export default function Home() {
             href="https://github.com/MathisLc25"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-zinc-900/90 border border-zinc-800 hover:border-green-500 hover:text-white transition-all text-xs font-semibold text-zinc-300 hover:shadow-[0_0_12px_rgba(34,197,94,0.2)]"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-green-500 hover:text-white transition-all text-xs font-semibold text-zinc-300 hover:shadow-[0_0_12px_rgba(34,197,94,0.2)]"
           >
             <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
               <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
@@ -155,76 +162,116 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Section Graphique Télémétrie / Visualisation de Données */}
-      <section className="mb-14 p-6 rounded-2xl bg-zinc-950 border border-zinc-800/80 shadow-[0_0_20px_rgba(0,0,0,0.8)]">
-        <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-5 gap-2">
-          <div>
-            <h3 className="text-sm uppercase tracking-wider text-green-400 font-bold flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-              Visualisation & Télémétrie en temps réel
-            </h3>
-            <p className="text-xs text-zinc-400 mt-0.5">
-              Modélisation comparative d'usure pneumatique & charge aéro (Simulation Python FastF1)
-            </p>
-          </div>
-          <span className="text-[11px] font-mono text-zinc-500 bg-zinc-900 px-2 py-1 rounded border border-zinc-800">
-            Échantillon : 50 Tours
-          </span>
+      {/* Graphique en Camembert (Donut Chart) des Compétences */}
+      <section className="mb-14 p-6 sm:p-8 rounded-2xl bg-zinc-950 border border-zinc-800">
+        <div className="mb-6">
+          <h3 className="text-sm uppercase tracking-wider text-green-400 font-bold flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-green-500"></span>
+            Répartition des Compétences & Spécialisations
+          </h3>
+          <p className="text-xs text-zinc-400 mt-1">
+            Focus technique et temps alloué au développement de projets
+          </p>
         </div>
 
-        {/* Représentation graphique SVG stylisée */}
-        <div className="w-full h-44 sm:h-52 bg-zinc-900/50 rounded-xl border border-zinc-800/70 p-4 relative overflow-hidden flex flex-col justify-end">
-          <svg className="w-full h-full overflow-visible" viewBox="0 0 500 120" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="greenGlow" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#22c55e" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#22c55e" stopOpacity="0.0" />
-              </linearGradient>
-            </defs>
+        <div className="flex flex-col md:flex-row items-center justify-around gap-8">
+          {/* Camembert SVG Donut */}
+          <div className="relative w-48 h-48 flex items-center justify-center">
+            <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
+              {/* Cercle d'arrière-plan */}
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                fill="transparent"
+                stroke="#18181b"
+                strokeWidth="16"
+              />
+              {/* Part 1 : Data & IA (35%) -> strokeDasharray="87.96 251.32" */}
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                fill="transparent"
+                stroke="#22c55e"
+                strokeWidth="16"
+                strokeDasharray="88 251.32"
+                strokeDashoffset="0"
+                className="transition-all duration-500"
+              />
+              {/* Part 2 : Aéro & F1 (25%) -> offset -88 */}
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                fill="transparent"
+                stroke="#16a34a"
+                strokeWidth="16"
+                strokeDasharray="63 251.32"
+                strokeDashoffset="-88"
+                className="transition-all duration-500"
+              />
+              {/* Part 3 : Web & Logiciel (25%) -> offset -151 */}
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                fill="transparent"
+                stroke="#15803d"
+                strokeWidth="16"
+                strokeDasharray="63 251.32"
+                strokeDashoffset="-151"
+                className="transition-all duration-500"
+              />
+              {/* Part 4 : C99 & SQL (15%) -> offset -214 */}
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                fill="transparent"
+                stroke="#3f3f46"
+                strokeWidth="16"
+                strokeDasharray="38 251.32"
+                strokeDashoffset="-214"
+                className="transition-all duration-500"
+              />
+            </svg>
+            <div className="absolute flex flex-col items-center justify-center pointer-events-none">
+              <span className="text-2xl font-extrabold text-white font-mono">100%</span>
+              <span className="text-[10px] uppercase text-zinc-400 font-semibold tracking-wider">
+                Tech Focus
+              </span>
+            </div>
+          </div>
 
-            {/* Grille d'arrière-plan */}
-            <line x1="0" y1="30" x2="500" y2="30" stroke="#27272a" strokeDasharray="3 3" />
-            <line x1="0" y1="60" x2="500" y2="60" stroke="#27272a" strokeDasharray="3 3" />
-            <line x1="0" y1="90" x2="500" y2="90" stroke="#27272a" strokeDasharray="3 3" />
-
-            {/* Aire sous la courbe */}
-            <path
-              d="M 0 100 Q 80 85, 150 70 T 300 45 T 420 25 T 500 15 L 500 120 L 0 120 Z"
-              fill="url(#greenGlow)"
-            />
-
-            {/* Courbe principale verte */}
-            <path
-              d="M 0 100 Q 80 85, 150 70 T 300 45 T 420 25 T 500 15"
-              fill="none"
-              stroke="#22c55e"
-              strokeWidth="2.5"
-              className="filter drop-shadow-[0_0_6px_rgba(34,197,94,0.8)]"
-            />
-
-            {/* Courbe de référence grise */}
-            <path
-              d="M 0 95 Q 100 80, 200 65 T 350 40 T 500 30"
-              fill="none"
-              stroke="#52525b"
-              strokeWidth="1.5"
-              strokeDasharray="4 4"
-            />
-          </svg>
-
-          <div className="flex justify-between items-center text-[10px] text-zinc-500 font-mono mt-2 pt-2 border-t border-zinc-800">
-            <span>Départ (Pneus Neufs)</span>
-            <span className="text-green-400/80">Fenêtre Pit-Stop Optimale</span>
-            <span>Fin de relais</span>
+          {/* Légende du camembert */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full md:w-auto">
+            {skills.map((skill) => (
+              <div
+                key={skill.label}
+                className="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex items-center justify-between gap-4 min-w-[240px]"
+              >
+                <div className="flex items-center gap-3">
+                  <span
+                    className="w-3 h-3 rounded-full"
+                    style={{ backgroundColor: skill.color }}
+                  ></span>
+                  <span className="text-xs font-medium text-zinc-200">{skill.label}</span>
+                </div>
+                <span className="text-xs font-mono font-bold text-green-400">
+                  {skill.pct}%
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Section des Projets avec onglets */}
+      {/* Section des Projets avec Onglets */}
       <section className="mb-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
-            <h2 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-white tracking-tight">
               Projets & Réalisations
             </h2>
             <p className="text-zinc-400 text-sm mt-1">
@@ -258,7 +305,7 @@ export default function Home() {
           {filteredProjects.map((project) => (
             <div
               key={project.title}
-              className="p-6 rounded-2xl border border-zinc-800/90 bg-zinc-950/70 hover:border-green-500/50 hover:shadow-[0_0_20px_rgba(34,197,94,0.12)] transition-all duration-300 group flex flex-col justify-between"
+              className="p-6 rounded-2xl border border-zinc-800 bg-zinc-950/70 hover:border-green-500/50 hover:shadow-[0_0_20px_rgba(34,197,94,0.12)] transition-all duration-300 group flex flex-col justify-between"
             >
               <div>
                 <div className="flex justify-between items-center mb-3">
@@ -294,7 +341,7 @@ export default function Home() {
                   ))}
                 </div>
 
-                {/* Boutons d'actions : Démo et/ou GitHub */}
+                {/* Boutons d'actions adaptatifs */}
                 <div className="flex items-center gap-3 pt-2 border-t border-zinc-900">
                   {project.demo && (
                     <a
