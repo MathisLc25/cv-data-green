@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const CATEGORIES = [
   "Tous",
@@ -102,8 +102,69 @@ const projects: Project[] = [
   },
 ];
 
+interface ChatMessage {
+  role: "user" | "assistant";
+  content: string;
+}
+
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<Category>("Tous");
+
+  // État du Chatbot Sharpex
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [messages, setMessages] = useState<ChatMessage[]>([
+    {
+      role: "assistant",
+      content:
+        "Bonjour ! Je suis Sharpex, l'IA de Mathis. Posez-moi vos questions sur ses projets, son profil ou sa recherche d'alternance !",
+    },
+  ]);
+  const [inputMessage, setInputMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const chatBottomRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    chatBottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, isChatOpen]);
+
+  const handleSendMessage = async (textToSend?: string) => {
+    const text = (textToSend || inputMessage).trim();
+    if (!text || isLoading) return;
+
+    const newMessages: ChatMessage[] = [...messages, { role: "user", content: text }];
+    setMessages(newMessages);
+    setInputMessage("");
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: text,
+          history: newMessages.slice(0, -1),
+        }),
+      });
+
+      if (!response.ok) throw new Error("Erreur de communication avec l'IA");
+
+      const data = await response.json();
+      setMessages((prev) => [
+        ...prev,
+        { role: "assistant", content: data.reply || data.message || "Je n'ai pas pu générer de réponse." },
+      ]);
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          content: "Désolé, une petite erreur s'est produite lors de la connexion. N'hésitez pas à me relancer !",
+        },
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const filteredProjects =
     selectedCategory === "Tous"
@@ -111,7 +172,7 @@ export default function Home() {
       : projects.filter((p) => p.category === selectedCategory);
 
   return (
-    <main className="min-h-screen bg-black text-zinc-100 px-6 py-12 md:px-16 max-w-6xl mx-auto selection:bg-emerald-500 selection:text-black">
+    <main className="min-h-screen bg-black text-zinc-100 px-6 py-12 md:px-16 max-w-6xl mx-auto selection:bg-emerald-500 selection:text-black relative">
       {/* En-tête */}
       <header className="flex flex-col md:flex-row md:items-center justify-between border-b border-zinc-900 pb-8 mb-12 gap-6">
         <div>
@@ -145,7 +206,7 @@ export default function Home() {
           </a>
 
           <a
-            href="/cv.pdf"
+            href="/cv_mathis_v2.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs transition-all shadow-[0_0_15px_rgba(16,185,129,0.4)]"
@@ -164,7 +225,6 @@ export default function Home() {
         <div className="p-8 sm:p-12 rounded-3xl bg-zinc-950/80 border border-zinc-900 flex justify-center items-center">
           <div className="relative w-full max-w-[480px] aspect-square flex items-center justify-center">
             <svg className="w-full h-full" viewBox="-200 -200 400 400">
-              {/* Polygones concentriques (20%, 40%, 60%, 80%, 100%) */}
               {[0.2, 0.4, 0.6, 0.8, 1].map((scale, i) => {
                 const r = 120 * scale;
                 const points = [0, 60, 120, 180, 240, 300]
@@ -184,7 +244,6 @@ export default function Home() {
                 );
               })}
 
-              {/* Axes radiaux */}
               {[0, 60, 120, 180, 240, 300].map((angle, i) => {
                 const rad = ((angle - 90) * Math.PI) / 180;
                 const x = (120 * Math.cos(rad)).toFixed(2);
@@ -202,7 +261,6 @@ export default function Home() {
                 );
               })}
 
-              {/* Polygone de surface vert Matrix */}
               <polygon
                 points="0,-108 88,-51 83,48 0,102 -78,45 -93,-54"
                 fill="rgba(16, 185, 129, 0.25)"
@@ -211,7 +269,6 @@ export default function Home() {
                 className="filter drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]"
               />
 
-              {/* Libellés des 6 axes */}
               <text x="0" y="-138" fill="#d4d4d8" fontSize="11" textAnchor="middle" fontWeight="500">
                 Data (Python/SQL)
               </text>
@@ -290,7 +347,7 @@ export default function Home() {
       </section>
 
       {/* Projets & Réalisations avec Onglets */}
-      <section className="mb-16">
+      <section className="mb-24">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
             <h2 className="text-2xl font-bold text-white tracking-tight">
@@ -351,7 +408,6 @@ export default function Home() {
               </div>
 
               <div>
-                {/* Badges technologiques */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech.split(", ").map((t) => (
                     <span
@@ -363,7 +419,6 @@ export default function Home() {
                   ))}
                 </div>
 
-                {/* Boutons d'actions */}
                 <div className="flex items-center gap-3 pt-2 border-t border-zinc-900">
                   {project.demo && (
                     <a
@@ -394,6 +449,119 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Widget Flottant : Chat avec Sharpex */}
+      <div className="fixed bottom-6 right-6 z-50">
+        {isChatOpen ? (
+          <div className="w-[360px] sm:w-[400px] h-[520px] bg-zinc-950 border border-zinc-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-5 duration-200">
+            {/* Header du Chat */}
+            <div className="p-4 bg-zinc-900/80 border-b border-zinc-800 flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                <div>
+                  <h3 className="text-sm font-bold text-white flex items-center gap-1.5">
+                    Sharpex <span className="text-[10px] bg-emerald-950 text-emerald-400 border border-emerald-800/40 px-1.5 py-0.2 rounded">IA</span>
+                  </h3>
+                  <p className="text-[11px] text-zinc-400">Assistant virtuel de Mathis</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsChatOpen(false)}
+                className="text-zinc-400 hover:text-white p-1 rounded-lg hover:bg-zinc-800 transition-colors text-sm"
+                aria-label="Fermer le chat"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Corps des messages */}
+            <div className="flex-1 p-4 overflow-y-auto space-y-3.5 text-xs">
+              {messages.map((m, idx) => (
+                <div
+                  key={idx}
+                  className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
+                >
+                  <div
+                    className={`max-w-[85%] p-3 rounded-2xl leading-relaxed whitespace-pre-line ${
+                      m.role === "user"
+                        ? "bg-emerald-500 text-black font-medium rounded-br-none"
+                        : "bg-zinc-900 text-zinc-200 border border-zinc-800/80 rounded-bl-none shadow-sm"
+                    }`}
+                  >
+                    {m.content}
+                  </div>
+                </div>
+              ))}
+              {isLoading && (
+                <div className="flex justify-start">
+                  <div className="bg-zinc-900 text-zinc-400 p-3 rounded-2xl rounded-bl-none border border-zinc-800 flex items-center gap-1.5 text-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-bounce" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-bounce [animation-delay:0.2s]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-bounce [animation-delay:0.4s]" />
+                  </div>
+                </div>
+              )}
+              <div ref={chatBottomRef} />
+            </div>
+
+            {/* Suggestions de questions rapides */}
+            <div className="px-3 py-1.5 bg-zinc-900/40 border-t border-zinc-900 flex gap-1.5 overflow-x-auto">
+              <button
+                onClick={() => handleSendMessage("Parle-moi de tes projets en F1")}
+                className="text-[10px] px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-emerald-400 hover:border-emerald-500/40 whitespace-nowrap transition-colors"
+              >
+                 Projets F1
+              </button>
+              <button
+                onClick={() => handleSendMessage("Quelles sont tes disponibilités pour l'alternance ?")}
+                className="text-[10px] px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-emerald-400 hover:border-emerald-500/40 whitespace-nowrap transition-colors"
+              >
+                 Alternance
+              </button>
+              <button
+                onClick={() => handleSendMessage("Quelles sont tes compétences en Data & IA ?")}
+                className="text-[10px] px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-emerald-400 hover:border-emerald-500/40 whitespace-nowrap transition-colors"
+              >
+                Stack Data/IA
+              </button>
+            </div>
+
+            {/* Formulaire d'envoi */}
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSendMessage();
+              }}
+              className="p-3 bg-zinc-900/90 border-t border-zinc-800 flex items-center gap-2"
+            >
+              <input
+                type="text"
+                placeholder="Posez une question sur Mathis..."
+                value={inputMessage}
+                onChange={(e) => setInputMessage(e.target.value)}
+                className="flex-1 bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+              />
+              <button
+                type="submit"
+                disabled={isLoading || !inputMessage.trim()}
+                className="px-3 py-2 bg-emerald-500 hover:bg-emerald-400 disabled:opacity-40 text-black font-bold rounded-xl text-xs transition-colors"
+              >
+                Envoyer
+              </button>
+            </form>
+          </div>
+        ) : (
+          <button
+            onClick={() => setIsChatOpen(true)}
+            className="flex items-center gap-2.5 px-4 py-3 bg-zinc-950 border border-emerald-500/40 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.25)] hover:shadow-[0_0_25px_rgba(16,185,129,0.45)] hover:border-emerald-400 transition-all group"
+          >
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+            <span className="text-xs font-bold text-white group-hover:text-emerald-400 transition-colors">
+              Discuter avec l'IA
+            </span>
+          </button>
+        )}
+      </div>
     </main>
   );
 }
