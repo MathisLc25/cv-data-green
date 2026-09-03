@@ -1,89 +1,136 @@
 "use client";
 
-const projects = [
-  {
-    title: "Analyse Data Pneu F1",
-    desc: "Analyse télémétrique FIA et modélisation de dégradation pneumatique par régression polynomiale.",
-    tech: "Python, FastF1, Scikit-Learn, Matplotlib",
-    github: "https://github.com/MathisLc25/f1-tire-analysis"
-  },
-  {
-    title: "OLM (POC)",
-    desc: "Développement d'un Proof of Concept pour un système de gestion financière sécurisé.",
-    tech: "Java, JEE, Architecture Logicielle",
-    github: "https://github.com/MathisLc25/JEECE-LedgerOne-Test-Technique"
-  },
-  {
-    title: "Dictionnaire en C",
-    desc: "Conception d'un dictionnaire bilingue optimisé avec gestion rigoureuse de la mémoire dynamique.",
-    tech: "Langage C, Algorithmique",
-    github: "https://github.com/MathisLc25/Projet-C-"
-  },
-  {
-    title: "Eco-Track F1 v2",
-    category: "AÉRONAUTIQUE & F1",
-    badge: "Calcul d'empreinte carbone",
-    desc: "Application web estimant l'empreinte CO2 des vols et acheminements logistiques sur l'ensemble des circuits du calendrier mondial.",
-    tech: "Next.js, React, Tailwind CSS, Data Viz",
-    demo: "https://eco-track-f1.vercel.app",
-    github: "https://github.com/MathisLc25/eco-track-f1-v2"
-  },
-  {
-    title: "Gestion Commerciale & SQL",
-    desc: "Modélisation MCD/MLD et implémentation d'une base de données SQL pour flux commerciaux.",
-    tech: "SQL, MySQL",
-    github: "#"
-  },
-  {
-    title: "F1 Performance App",
-    category: "AÉRONAUTIQUE & F1",
-    badge: "Clustering ML & FastF1",
-    desc: "Dashboard d'analyse télémétrique et de coaching IA pour monoplaces de course. Comparaison tour par tour et analyse des zones de freinage.",
-    tech: "Python, Streamlit, FastF1, Scikit-learn, Plotly",
-    demo: "https://f1performance.streamlit.app",
-    github: "https://github.com/MathisLc25/F1_Performance_App"
-  },
-  {
-    title: "Enterprise AI & Data Automation Hub",
-    desc: "Plateforme de traitement par lot et temps réel des flux clients : classification Llama 3.1, escalade automatique par webhook et dashboard d'audit.",
-    tech: "Python, Streamlit, Groq API, Pandas, Plotly",
-    github: "https://github.com/MathisLc25/AI-customer"
-  },
-  {
-    title: "Moteur d'audit de transactions bancaires",
-    desc: "Moteur haute performance en C99 analysant 1 000 000 de transactions bancaires en 714 ms (~1,4M tx/s). Contrôle de conformité, calcul d'agrégats de volume et détection d'alertes de fraude en temps réel.",
-    tech: "C99, GCC O3, AML Compliance, Benchmarking",
-    github: "https://github.com/MathisLc25/bank-log-engine"
-  },
+import { useState } from "react";
+
+const CATEGORIES = [
+  "Tous",
+  "Aéronautique & F1",
+  "Data & IA",
+  "Systèmes & Backend",
+  "Logiciel & Web",
+] as const;
+
+type Category = (typeof CATEGORIES)[number];
+
+interface Project {
+  title: string;
+  category: "Aéronautique & F1" | "Data & IA" | "Systèmes & Backend" | "Logiciel & Web";
+  badge?: string;
+  desc: string;
+  tech: string;
+  demo?: string;
+  github?: string;
+}
+
+const projects: Project[] = [
   {
     title: "Aero ADS-B Flight Tracker",
-    category: "AÉRONAUTIQUE & F1",
+    category: "Aéronautique & F1",
     badge: "Données spatiales temps réel",
     desc: "Visualiseur de routes aériennes et logs radar avec calculs des profils d'altitude, de dérive et estimation de consommation carburant.",
     tech: "Python, Streamlit, Folium, Plotly, Aéronautique",
     demo: "https://aero-flight-tracker.streamlit.app",
-    github: "https://github.com/MathisLc25/aero-flight-tracker"
-  }
+    github: "https://github.com/MathisLc25/aero-flight-tracker",
+  },
+  {
+    title: "F1 Performance App",
+    category: "Aéronautique & F1",
+    badge: "Clustering ML & FastF1",
+    desc: "Dashboard d'analyse télémétrique et de coaching IA pour monoplaces de course. Comparaison tour par tour et analyse des zones de freinage.",
+    tech: "Python, Streamlit, FastF1, Scikit-learn, Plotly",
+    demo: "https://f1performance.streamlit.app",
+    github: "https://github.com/MathisLc25/F1_Performance_App",
+  },
+  {
+    title: "Eco-Track F1 v2",
+    category: "Aéronautique & F1",
+    badge: "Calcul d'empreinte carbone",
+    desc: "Application web estimant l'empreinte CO2 des vols et acheminements logistiques sur l'ensemble des circuits du calendrier mondial.",
+    tech: "Next.js, React, Tailwind CSS, Data Viz",
+    demo: "https://eco-track-f1.vercel.app",
+    github: "https://github.com/MathisLc25/eco-track-f1-v2",
+  },
+  {
+    title: "Analyse Data Pneu F1",
+    category: "Aéronautique & F1",
+    badge: "Régression polynomiale",
+    desc: "Analyse télémétrique FIA et modélisation de dégradation pneumatique par régression pour anticiper les stratégies de course.",
+    tech: "Python, Streamlit, FastF1, Scikit-Learn, Matplotlib",
+    demo: "https://f1-tire-analysis.streamlit.app",
+    github: "https://github.com/MathisLc25/f1-tire-analysis",
+  },
+  {
+    title: "Enterprise AI & Data Automation Hub",
+    category: "Data & IA",
+    badge: "Llama 3.1 & Analytics",
+    desc: "Plateforme de traitement par lot et temps réel des flux clients : classification Llama 3.1 via Groq, escalade automatique par webhook et dashboard d'audit.",
+    tech: "Python, Streamlit, Groq API, Pandas, Plotly",
+    demo: "https://ai-customer.streamlit.app",
+    github: "https://github.com/MathisLc25/AI-customer",
+  },
+  {
+    title: "Moteur d'audit de transactions bancaires",
+    category: "Systèmes & Backend",
+    badge: "Haute Performance (~1.4M tx/s)",
+    desc: "Moteur haute performance en C99 analysant 1 000 000 de transactions bancaires en 714 ms. Contrôle de conformité AML, agrégats de volume et alertes de fraude.",
+    tech: "C99, GCC O3, AML Compliance, Benchmarking",
+    github: "https://github.com/MathisLc25/bank-log-engine",
+  },
+  {
+    title: "Gestion Commerciale & SQL",
+    category: "Systèmes & Backend",
+    badge: "Modélisation Relationnelle",
+    desc: "Conception MCD/MLD normalisée et implémentation d'une base de données SQL optimisée pour la gestion de stocks et flux commerciaux.",
+    tech: "SQL, MySQL, Modélisation MCD/MLD",
+    github: "https://github.com/MathisLc25",
+  },
+  {
+    title: "Dictionnaire en C",
+    category: "Systèmes & Backend",
+    badge: "Algorithmique & Pointeurs",
+    desc: "Conception d'un dictionnaire bilingue optimisé en mémoire avec gestion rigoureuse des allocations dynamiques et arbres binaires.",
+    tech: "Langage C, Structures de données, Valgrind",
+    github: "https://github.com/MathisLc25/Projet-C-",
+  },
+  {
+    title: "OLM (Asset Management)",
+    category: "Logiciel & Web",
+    badge: "POC FinTech Étudiant",
+    desc: "Proof of Concept pour un système de gestion financière et budgétaire spécialement adapté aux étudiants, développé suite à un test technique chez JEECE.",
+    tech: "Java, Spring Boot, React, Architecture Logicielle",
+    github: "https://github.com/MathisLc25/JEECE-LedgerOne-Test-Technique",
+  },
 ];
 
 export default function Home() {
+  const [selectedCategory, setSelectedCategory] = useState<Category>("Tous");
+
+  const filteredProjects =
+    selectedCategory === "Tous"
+      ? projects
+      : projects.filter((p) => p.category === selectedCategory);
+
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 px-6 py-12 md:px-16 max-w-6xl mx-auto">
-      {/* En-tête / Header avec lien GitHub direct pour les RH */}
+      {/* En-tête / Header avec liens directs Pro & RH */}
       <header className="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-800 pb-8 mb-12 gap-6">
         <div>
-          <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-2">
-            Mathis Ladine Caloc
-          </h1>
+          <div className="flex items-center gap-3 mb-2">
+            <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
+              Mathis Ladine Caloc
+            </h1>
+            <span className="hidden sm:inline-block px-2.5 py-1 text-[11px] font-semibold bg-emerald-950/80 text-emerald-400 border border-emerald-800/50 rounded-full">
+              Alternance Sept. 2026
+            </span>
+          </div>
           <p className="text-emerald-400 font-medium text-base md:text-lg">
             Data & Artificial Intelligence • ECE Bordeaux
           </p>
-          <p className="text-slate-400 text-sm mt-1">
-            À la recherche d'une alternance en Data / IA à partir de Septembre 2026.
+          <p className="text-slate-400 text-sm mt-1 max-w-xl">
+            Futur ingénieur passionné par l'aéronautique, la télémétrie sportive et les architectures de données performantes.
           </p>
         </div>
 
-        {/* Boutons d'accès rapide Pro & RH */}
         <div className="flex items-center gap-3">
           <a
             href="https://github.com/MathisLc25"
@@ -110,34 +157,55 @@ export default function Home() {
 
       {/* Section des Projets */}
       <section className="mb-16">
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold text-white tracking-tight">Projets & Réalisations</h2>
-          <p className="text-slate-400 text-sm mt-1">
-            Découvrez mes projets en Data, IA, ingénierie logicielle et analyse de performance.
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+          <div>
+            <h2 className="text-2xl font-bold text-white tracking-tight">
+              Projets & Réalisations
+            </h2>
+            <p className="text-slate-400 text-sm mt-1">
+              Filtrez selon vos intérêts techniques pour tester les démos en direct ou consulter le code source.
+            </p>
+          </div>
+
+          {/* Onglets de filtrage */}
+          <div className="flex flex-wrap gap-2">
+            {CATEGORIES.map((cat) => {
+              const active = selectedCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all border ${
+                    active
+                      ? "bg-emerald-500 text-slate-950 border-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.3)]"
+                      : "bg-slate-900/80 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200"
+                  }`}
+                >
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
+        {/* Grille dynamique des projets */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project) => (
-            <div 
-              key={project.title} 
+          {filteredProjects.map((project) => (
+            <div
+              key={project.title}
               className="p-6 rounded-2xl border border-slate-800 bg-slate-900/20 hover:border-slate-700 hover:bg-slate-900/40 transition-all duration-300 group flex flex-col justify-between"
             >
               <div>
-                {(project.category || project.badge) && (
-                  <div className="flex justify-between items-center mb-2">
-                    {project.category && (
-                      <span className="text-[11px] font-bold text-emerald-400 tracking-wider uppercase">
-                        {project.category}
-                      </span>
-                    )}
-                    {project.badge && (
-                      <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-950/60 text-emerald-400 border border-emerald-800/40 font-medium">
-                        {project.badge}
-                      </span>
-                    )}
-                  </div>
-                )}
+                <div className="flex justify-between items-center mb-3">
+                  <span className="text-[11px] font-bold text-emerald-400 tracking-wider uppercase">
+                    {project.category}
+                  </span>
+                  {project.badge && (
+                    <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-950/60 text-emerald-400 border border-emerald-800/40 font-medium">
+                      {project.badge}
+                    </span>
+                  )}
+                </div>
 
                 <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
                   {project.title}
@@ -152,8 +220,8 @@ export default function Home() {
                 {/* Badges technologiques */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech.split(", ").map((t) => (
-                    <span 
-                      key={t} 
+                    <span
+                      key={t}
                       className="text-xs px-2.5 py-1 rounded-md bg-slate-800/70 text-slate-300 border border-slate-700/50"
                     >
                       {t}
@@ -161,12 +229,12 @@ export default function Home() {
                   ))}
                 </div>
 
-                {/* Boutons d'actions : Démo et/ou GitHub */}
+                {/* Boutons d'actions adaptatifs */}
                 <div className="flex items-center gap-3 pt-2">
                   {project.demo && (
-                    <a 
-                      href={project.demo} 
-                      target="_blank" 
+                    <a
+                      href={project.demo}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 text-center py-2.5 px-4 text-xs font-semibold rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-colors flex items-center justify-center gap-1.5 shadow-sm"
                     >
@@ -174,12 +242,14 @@ export default function Home() {
                     </a>
                   )}
 
-                  {project.github && project.github !== "#" && (
-                    <a 
-                      href={project.github} 
-                      target="_blank" 
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
                       rel="noopener noreferrer"
-                      className={`${project.demo ? "flex-1" : "w-full"} text-center py-2.5 px-4 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-white transition-colors border border-slate-700/60 flex items-center justify-center gap-1.5`}
+                      className={`${
+                        project.demo ? "flex-1" : "w-full"
+                      } text-center py-2.5 px-4 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-white transition-colors border border-slate-700/60 flex items-center justify-center gap-1.5`}
                     >
                       Code GitHub ↗
                     </a>

@@ -30,7 +30,7 @@ export async function POST(req: Request) {
       Voici les informations officielles et détaillées sur Mathis :
       - Identité : Mathis Ladine Caloc, 22 ans. Réside à Bordeaux.
       - Poste recherché : Alternance en Data & Intelligence Artificielle à partir de Septembre 2026 (Rythme ECE).
-      - Formation & Objectifs : Actuellement en Bachelor à l'ECE Bordeaux, il entre en 3e année de Bachelor avec la spécialisation Data & IA. Son objectif est d'intégrer un cycle d'ingénieur directement après sa 3e année (à l'ECE ou l'ESTACA). À terme, il vise le programme des Cadets Air France ou une carrière d'ingénieur en Formule 1.
+      - Formation & Objectifs : Actuellement en Bachelor à l'ECE Bordeaux, il entre en 3e année de Bachelor avec la spécialisation Data & IA. Son objectif est d'intégrer un cycle d'ingénieur directement après sa 3e année (à l'ECE ou l'ESTACA). À terme, il vise une carrière d'ingénieur.
       - Expérience professionnelle : Travaille à Auchan Bordeaux Lac. Il a débuté comme caissier, a acquis de l'expérience en rayon, puis a été promu gestionnaire de ligne grâce à son sérieux et ses compétences en leadership.
       - Projets notables : 
         1. OLM (Asset Management / POC) : Application de suivi et de gestion des dépenses conçue spécifiquement pour les étudiants, née de sa propre expérience de la vie étudiante depuis 3 ans.
