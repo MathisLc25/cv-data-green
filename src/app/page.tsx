@@ -56,7 +56,7 @@ const projects: Project[] = [
     badge: "Régression polynomiale",
     desc: "Analyse télémétrique FIA et modélisation de dégradation pneumatique par régression pour anticiper les stratégies de course.",
     tech: "Python, Streamlit, FastF1, Scikit-Learn, Matplotlib",
-    demo: "https://f1-tire-analysis.streamlit.app",
+    demo: "https://f1-tire-analysis-9p8e2sxczj2rumfqr3dbru.streamlit.app/",
     github: "https://github.com/MathisLc25/f1-tire-analysis",
   },
   {
@@ -96,7 +96,7 @@ const projects: Project[] = [
     title: "OLM (Asset Management)",
     category: "Logiciel & Web",
     badge: "POC FinTech Étudiant",
-    desc: "Proof of Concept pour un système de gestion financière et budgétaire spécialement adapté aux étudiants, développé suite à un test technique chez JEECE.",
+    desc: "Proof of Concept pour un système de gestion financière et budgétaire spécialement adapté aux étudiants.",
     tech: "Java, Spring Boot, React, Architecture Logicielle",
     github: "https://github.com/MathisLc25/JEECE-LedgerOne-Test-Technique",
   },
