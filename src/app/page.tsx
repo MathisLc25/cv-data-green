@@ -29,7 +29,7 @@ const projects: Project[] = [
     badge: "Données spatiales temps réel",
     desc: "Visualiseur de routes aériennes et logs radar avec calculs des profils d'altitude, de dérive et estimation de consommation carburant.",
     tech: "Python, Streamlit, Folium, Plotly, Aéronautique",
-    demo: "https://mathislc25-aero-flight-tracker-srcapp-geektn.streamlit.app/?embed=true",
+    demo: "https://aero-flight-tracker-mathis.streamlit.app",
     github: "https://github.com/MathisLc25/aero-flight-tracker",
   },
   {
