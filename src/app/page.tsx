@@ -47,7 +47,7 @@ const projects: Project[] = [
     badge: "Calcul d'empreinte carbone",
     desc: "Application web estimant l'empreinte CO2 des vols et acheminements logistiques sur l'ensemble des circuits du calendrier mondial.",
     tech: "Next.js, React, Tailwind CSS, Data Viz",
-    demo: "https://eco-track-f1.vercel.app",
+    demo: "https://eco-track-f1-v2.vercel.app/",
     github: "https://github.com/MathisLc25/eco-track-f1-v2",
   },
   {
