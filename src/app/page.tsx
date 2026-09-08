@@ -93,12 +93,13 @@ const projects: Project[] = [
     github: "https://github.com/MathisLc25/Projet-C-",
   },
   {
-    title: "OLM (Asset Management)",
-    category: "Logiciel & Web",
-    badge: "POC FinTech Étudiant",
-    desc: "Proof of Concept pour un système de gestion financière et budgétaire spécialement adapté aux étudiants.",
-    tech: "Java, Spring Boot, React, Architecture Logicielle",
-    github: "https://github.com/MathisLc25/JEECE-LedgerOne-Test-Technique",
+  title: "OLM — Gestionnaire de Budget Étudiant",
+  category: "Web & Data",
+  badge: "FastAPI & Next.js",
+  desc: "Application de suivi financier personnel : catégorisation automatique des dépenses, alertes de budget et module d'import de relevés bancaires CSV.",
+  tech: "Python, FastAPI, SQLModel, Next.js, Tailwind CSS",
+  demo: "/olm",
+  github: "https://github.com/MathisLc25/OLM-Dashboard",
   },
 ];
 
