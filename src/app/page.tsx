@@ -38,7 +38,7 @@ const projects: Project[] = [
     badge: "Clustering ML & FastF1",
     desc: "Dashboard d'analyse télémétrique et de coaching IA pour monoplaces de course. Comparaison tour par tour et analyse des zones de freinage.",
     tech: "Python, Streamlit, FastF1, Scikit-learn, Plotly",
-    demo: "https://f1performance.streamlit.app",
+    demo: "https://f1-perfo-tisma.streamlit.app/",
     github: "https://github.com/MathisLc25/F1_Performance_App",
   },
   {
