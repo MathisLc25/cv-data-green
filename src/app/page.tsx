@@ -94,7 +94,7 @@ const projects: Project[] = [
   },
   {
   title: "OLM — Gestionnaire de Budget Étudiant",
-  category: "Web & Data",
+  category: "Data & IA",
   badge: "FastAPI & Next.js",
   desc: "Application de suivi financier personnel : catégorisation automatique des dépenses, alertes de budget et module d'import de relevés bancaires CSV.",
   tech: "Python, FastAPI, SQLModel, Next.js, Tailwind CSS",
