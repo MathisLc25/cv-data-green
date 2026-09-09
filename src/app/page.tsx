@@ -65,7 +65,7 @@ const projects: Project[] = [
     badge: "Llama 3.1 & Analytics",
     desc: "Plateforme de traitement par lot et temps réel des flux clients : classification Llama 3.1 via Groq, escalade automatique par webhook et dashboard d'audit.",
     tech: "Python, Streamlit, Groq API, Pandas, Plotly",
-    demo: "https://ai-customer.streamlit.app",
+    demo: "https://ai-customer-m7p7prx9bmew2hsfqn7ump.streamlit.app/",
     github: "https://github.com/MathisLc25/AI-customer",
   },
   {
