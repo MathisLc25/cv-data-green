@@ -42,6 +42,15 @@ const projects: Project[] = [
     github: "https://github.com/MathisLc25/F1_Performance_App",
   },
   {
+  title: "OLM — Gestionnaire de Budget Étudiant",
+  category: "Data & IA",
+  badge: "FastAPI & Next.js",
+  desc: "Application de suivi financier personnel : catégorisation automatique des dépenses, alertes de budget et module d'import de relevés bancaires CSV.",
+  tech: "Python, FastAPI, SQLModel, Next.js, Tailwind CSS",
+  demo: "/olm",
+  github: "https://github.com/MathisLc25/OLM-Dashboard",
+  },
+  {
     title: "Eco-Track F1 v2",
     category: "Aéronautique & F1",
     badge: "Calcul d'empreinte carbone",
@@ -92,15 +101,7 @@ const projects: Project[] = [
     tech: "Langage C, Structures de données, Valgrind",
     github: "https://github.com/MathisLc25/Projet-C-",
   },
-  {
-  title: "OLM — Gestionnaire de Budget Étudiant",
-  category: "Data & IA",
-  badge: "FastAPI & Next.js",
-  desc: "Application de suivi financier personnel : catégorisation automatique des dépenses, alertes de budget et module d'import de relevés bancaires CSV.",
-  tech: "Python, FastAPI, SQLModel, Next.js, Tailwind CSS",
-  demo: "/olm",
-  github: "https://github.com/MathisLc25/OLM-Dashboard",
-  },
+  
 ];
 
 interface ChatMessage {
@@ -177,7 +178,7 @@ export default function Home() {
           <div>
             <div className="flex flex-wrap items-center gap-3 mb-2">
               <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
-                Mathis Ladine Caloc
+                Mathis Ladine--Caloc
               </h1>
               <span className="px-2.5 py-1 text-[11px] font-semibold bg-emerald-950/70 text-emerald-400 border border-emerald-500/40 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.2)]">
                 Alternance Sept. 2026
