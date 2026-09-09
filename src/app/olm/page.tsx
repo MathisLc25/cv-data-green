@@ -19,13 +19,13 @@ const CATEGORIES = [
   { name: 'Abonnements & Tech', base: 25, variance: 5, color: '#ec4899' },
 ];
 
-const MONTH_NAMES = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Déc'];
+const MONTH_NAMES = ['Jan', 'FÃ©v', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'AoÃ»t', 'Sep', 'Oct', 'Nov', 'DÃ©c'];
 
 export default function OlmBudgetDashboard() {
   const [monthsCount, setMonthsCount] = useState<3 | 6 | 12>(6);
   const [seed, setSeed] = useState(1);
 
-  // Génération dynamique des données selon le nombre de mois et le seed
+  // GÃ©nÃ©ration dynamique des donnÃ©es selon le nombre de mois et le seed
   const { timelineData, categoryTotals, transactions, totalSpent, avgMonthly } = useMemo(() => {
     const timeline = [];
     const catTotals: Record<string, number> = {
@@ -55,12 +55,12 @@ export default function OlmBudgetDashboard() {
         monthTotal += amount;
         catTotals[cat.name] += amount;
 
-        // Génération de transactions représentatives pour les mois récents
+        // GÃ©nÃ©ration de transactions reprÃ©sentatives pour les mois rÃ©cents
         if (i <= 1) {
           const day = Math.floor(randFactor * 25) + 1;
           txList.push({
             id: `${i}-${catIdx}`,
-            label: `${cat.name} (${catIdx === 0 ? 'Résidence' : catIdx === 1 ? 'Auchan / Carrefour' : 'Paiement'})`,
+            label: `${cat.name} (${catIdx === 0 ? 'RÃ©sidence' : catIdx === 1 ? 'Auchan / Carrefour' : 'Paiement'})`,
             cat: cat.name,
             date: `${day < 10 ? '0' + day : day} ${MONTH_NAMES[d.getMonth()]}`,
             amount: amount,
@@ -107,7 +107,7 @@ export default function OlmBudgetDashboard() {
           </Link>
           <div className="flex items-center gap-2">
             <span className="text-xs px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full font-mono">
-              API FastAPI : opérationnelle
+              API FastAPI : opÃ©rationnelle
             </span>
             <a
               href="https://olm-dashboard-1.onrender.com/docs"
@@ -120,18 +120,18 @@ export default function OlmBudgetDashboard() {
           </div>
         </div>
 
-        {/* Header avec sélecteur de durée & bouton de régénération */}
+        {/* Header avec sÃ©lecteur de durÃ©e & bouton de rÃ©gÃ©nÃ©ration */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <h1 className="text-2xl md:text-4xl font-bold tracking-tight">OLM — Budget & Dépenses Étudiantes</h1>
+            <h1 className="text-2xl md:text-4xl font-bold tracking-tight">OLM â€” Budget & DÃ©penses Ã‰tudiantes</h1>
             <p className="text-gray-400 mt-2 text-sm md:text-base">
-              Modélisation analytique, catégorisation automatique et projection sur séries temporelles.
+              ModÃ©lisation analytique, catÃ©gorisation automatique et projection sur sÃ©ries temporelles.
             </p>
           </div>
 
           <div className="flex items-center gap-2 bg-white/[0.03] border border-white/10 p-1.5 rounded-xl">
             <div className="flex items-center gap-1 text-xs text-gray-400 px-2 font-mono">
-              <Calendar size={14} /> Période :
+              <Calendar size={14} /> PÃ©riode :
             </div>
             {([3, 6, 12] as const).map((cnt) => (
               <button
@@ -148,7 +148,7 @@ export default function OlmBudgetDashboard() {
             ))}
             <button
               onClick={() => setSeed((s) => s + 1)}
-              title="Générer de nouvelles transactions simulées"
+              title="GÃ©nÃ©rer de nouvelles transactions simulÃ©es"
               className="p-1.5 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors ml-1"
             >
               <RefreshCw size={14} />
@@ -160,11 +160,11 @@ export default function OlmBudgetDashboard() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="bg-white/[0.03] border border-white/10 p-5 rounded-2xl">
             <div className="flex justify-between items-start text-gray-400 mb-2">
-              <span className="text-xs uppercase tracking-wider font-mono">Dépense Totale ({monthsCount}m)</span>
+              <span className="text-xs uppercase tracking-wider font-mono">DÃ©pense Totale ({monthsCount}m)</span>
               <Wallet size={18} className="text-emerald-400" />
             </div>
-            <div className="text-2xl font-bold">€ {totalSpent.toLocaleString('fr-FR')}</div>
-            <div className="text-xs text-gray-400 mt-1 font-mono">Plafond respecté</div>
+            <div className="text-2xl font-bold">â‚¬ {totalSpent.toLocaleString('fr-FR')}</div>
+            <div className="text-xs text-gray-400 mt-1 font-mono">Plafond respectÃ©</div>
           </div>
 
           <div className="bg-white/[0.03] border border-white/10 p-5 rounded-2xl">
@@ -172,13 +172,13 @@ export default function OlmBudgetDashboard() {
               <span className="text-xs uppercase tracking-wider font-mono">Moyenne Mensuelle</span>
               <ArrowDownRight size={18} className="text-amber-400" />
             </div>
-            <div className="text-2xl font-bold">€ {avgMonthly} / mois</div>
-            <div className="text-xs text-amber-400 mt-1 font-mono">Sur base de € 800 budget</div>
+            <div className="text-2xl font-bold">â‚¬ {avgMonthly} / mois</div>
+            <div className="text-xs text-amber-400 mt-1 font-mono">Sur base de â‚¬ 800 budget</div>
           </div>
 
           <div className="bg-white/[0.03] border border-white/10 p-5 rounded-2xl">
             <div className="flex justify-between items-start text-gray-400 mb-2">
-              <span className="text-xs uppercase tracking-wider font-mono">Taux d'Épargne Moyen</span>
+              <span className="text-xs uppercase tracking-wider font-mono">Taux d'Ã‰pargne Moyen</span>
               <PiggyBank size={18} className="text-blue-400" />
             </div>
             <div className="text-2xl font-bold">{Math.max(0, Math.round(((800 - avgMonthly) / 800) * 100))}%</div>
@@ -187,10 +187,10 @@ export default function OlmBudgetDashboard() {
 
           <div className="bg-white/[0.03] border border-white/10 p-5 rounded-2xl">
             <div className="flex justify-between items-start text-gray-400 mb-2">
-              <span className="text-xs uppercase tracking-wider font-mono">Volume Données</span>
+              <span className="text-xs uppercase tracking-wider font-mono">Volume DonnÃ©es</span>
               <ReceiptText size={18} className="text-purple-400" />
             </div>
-            <div className="text-2xl font-bold">{monthsCount * 18} entrées</div>
+            <div className="text-2xl font-bold">{monthsCount * 18} entrÃ©es</div>
             <div className="text-xs text-purple-400 mt-1 font-mono">Simulation active (seed {seed})</div>
           </div>
         </div>
@@ -198,15 +198,15 @@ export default function OlmBudgetDashboard() {
         {/* Graphiques Recharts */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
-          {/* Évolution temporelle (AreaChart) */}
+          {/* Ã‰volution temporelle (AreaChart) */}
           <div className="lg:col-span-2 bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex flex-col justify-between">
             <div className="flex justify-between items-center mb-6">
               <div>
-                <h2 className="text-base font-semibold">Évolution des Dépenses vs Budget Fixé</h2>
-                <p className="text-xs text-gray-400 mt-0.5">Courbe mensuelle consolidée sur la période</p>
+                <h2 className="text-base font-semibold">Ã‰volution des DÃ©penses vs Budget FixÃ©</h2>
+                <p className="text-xs text-gray-400 mt-0.5">Courbe mensuelle consolidÃ©e sur la pÃ©riode</p>
               </div>
               <span className="text-xs font-mono text-emerald-400 flex items-center gap-1">
-                <TrendingUp size={14} /> Seuil 800€
+                <TrendingUp size={14} /> Seuil 800â‚¬
               </span>
             </div>
 
@@ -223,7 +223,7 @@ export default function OlmBudgetDashboard() {
                   <YAxis stroke="#525252" fontSize={11} tickLine={false} />
                   <Tooltip 
                     contentStyle={{ backgroundColor: '#171717', borderColor: '#262626', borderRadius: '8px', fontSize: '12px' }}
-                    formatter={(val: any) => [`€ ${val}`, 'Total Dépensé']}
+                    formatter={(val: any) => [`â‚¬ ${val}`, 'Total DÃ©pensÃ©']}
                   />
                   <Area type="monotone" dataKey="depenses" stroke="#10b981" strokeWidth={2} fillOpacity={1} fill="url(#colorSpend)" />
                 </AreaChart>
@@ -231,11 +231,11 @@ export default function OlmBudgetDashboard() {
             </div>
           </div>
 
-          {/* Répartition par Catégorie (PieChart) */}
+          {/* RÃ©partition par CatÃ©gorie (PieChart) */}
           <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex flex-col justify-between">
             <div>
-              <h2 className="text-base font-semibold">Structure des Dépenses</h2>
-              <p className="text-xs text-gray-400 mt-0.5">Poids relatif cumulé par catégorie</p>
+              <h2 className="text-base font-semibold">Structure des DÃ©penses</h2>
+              <p className="text-xs text-gray-400 mt-0.5">Poids relatif cumulÃ© par catÃ©gorie</p>
             </div>
 
             <div className="h-56 w-full my-auto">
@@ -257,7 +257,7 @@ export default function OlmBudgetDashboard() {
                   </Pie>
                   <Tooltip 
                     contentStyle={{ backgroundColor: '#171717', borderColor: '#262626', borderRadius: '8px', fontSize: '12px' }}
-                    formatter={(val: any) => [`€ ${val.toLocaleString('fr-FR')}`, 'Total']}
+                    formatter={(val: any) => [`â‚¬ ${val.toLocaleString('fr-FR')}`, 'Total']}
                   />
                 </PieChart>
               </ResponsiveContainer>
@@ -270,29 +270,29 @@ export default function OlmBudgetDashboard() {
                     <span className="w-2 h-2 rounded-full" style={{ backgroundColor: cat.color }} />
                     <span className="text-gray-300">{cat.name}</span>
                   </div>
-                  <span className="font-mono text-gray-400">€ {cat.value.toLocaleString('fr-FR')}</span>
+                  <span className="font-mono text-gray-400">â‚¬ {cat.value.toLocaleString('fr-FR')}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Tableau des transactions simulées récentes */}
+        {/* Tableau des transactions simulÃ©es rÃ©centes */}
         <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
           <div className="flex justify-between items-center mb-4">
             <div>
-              <h2 className="text-base font-semibold">Dernières Écritures Extraites</h2>
-              <p className="text-xs text-gray-400">Flux catégorisés dynamiquement par le modèle</p>
+              <h2 className="text-base font-semibold">DerniÃ¨res Ã‰critures Extraites</h2>
+              <p className="text-xs text-gray-400">Flux catÃ©gorisÃ©s dynamiquement par le modÃ¨le</p>
             </div>
-            <span className="text-xs font-mono text-gray-400">Échantillon récent</span>
+            <span className="text-xs font-mono text-gray-400">Ã‰chantillon rÃ©cent</span>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
               <thead className="text-xs uppercase text-gray-400 border-b border-white/10 font-mono">
                 <tr>
-                  <th className="pb-3">Libellé</th>
-                  <th className="pb-3">Catégorie</th>
+                  <th className="pb-3">LibellÃ©</th>
+                  <th className="pb-3">CatÃ©gorie</th>
                   <th className="pb-3">Date</th>
                   <th className="pb-3 text-right">Montant</th>
                 </tr>
@@ -315,7 +315,7 @@ export default function OlmBudgetDashboard() {
                     </td>
                     <td className="py-3 text-gray-400 text-xs font-mono">{t.date}</td>
                     <td className="py-3 text-right font-mono text-gray-100 font-medium">
-                      -€ {t.amount}.00
+                      -â‚¬ {t.amount}.00
                     </td>
                   </tr>
                 ))}
